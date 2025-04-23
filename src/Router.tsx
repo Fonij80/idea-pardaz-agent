@@ -32,66 +32,71 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   return <>{children}</>;
 };
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Layout />,
+      errorElement: <NotFound />,
+      children: [
+        {
+          index: true,
+          element: <Landing />,
+        },
+        {
+          path: "login",
+          element: <Login />,
+        },
+        {
+          path: "register",
+          element: <Register />,
+        },
+        {
+          path: "dashboard",
+          element: (
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "ideas",
+          element: (
+            <ProtectedRoute>
+              <Ideas />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "schedule",
+          element: (
+            <ProtectedRoute>
+              <Schedule />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "analytics",
+          element: (
+            <ProtectedRoute>
+              <Analytics />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "calendar",
+          element: (
+            <ProtectedRoute>
+              <Calendar />
+            </ProtectedRoute>
+          ),
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <Layout />,
-    errorElement: <NotFound />,
-    children: [
-      {
-        index: true,
-        element: <Landing />,
-      },
-      {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "register",
-        element: <Register />,
-      },
-      {
-        path: "dashboard",
-        element: (
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "ideas",
-        element: (
-          <ProtectedRoute>
-            <Ideas />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "schedule",
-        element: (
-          <ProtectedRoute>
-            <Schedule />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "analytics",
-        element: (
-          <ProtectedRoute>
-            <Analytics />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "calendar",
-        element: (
-          <ProtectedRoute>
-            <Calendar />
-          </ProtectedRoute>
-        ),
-      },
-    ],
-  },
-]);
+    basename: import.meta.env.BASE_URL,
+  }
+);
 
 export default router;
