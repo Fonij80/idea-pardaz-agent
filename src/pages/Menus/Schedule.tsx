@@ -1,15 +1,41 @@
-
 import { useState } from "react";
-import { PageLayout } from "@/components/layout/PageLayout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Image, Calendar as CalendarIcon, Clock, Instagram, MessageSquare, Share, Twitter } from "lucide-react";
+import {
+  Image,
+  Calendar as CalendarIcon,
+  Clock,
+  Instagram,
+  MessageSquare,
+  Share,
+  Twitter,
+} from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
 import { faIR } from "date-fns-jalali/locale";
 
@@ -23,7 +49,7 @@ const initialEvents = [
     date: "2025-06-10",
     time: "18:00",
     contentType: "image",
-    status: "scheduled"
+    status: "scheduled",
   },
   {
     id: 2,
@@ -33,7 +59,7 @@ const initialEvents = [
     date: "2025-06-12",
     time: "10:00",
     contentType: "text",
-    status: "scheduled"
+    status: "scheduled",
   },
   {
     id: 3,
@@ -43,8 +69,8 @@ const initialEvents = [
     date: "2025-06-14",
     time: "16:00",
     contentType: "video",
-    status: "scheduled"
-  }
+    status: "scheduled",
+  },
 ];
 
 // Platform icons mapping
@@ -52,7 +78,7 @@ const platformIcons = {
   instagram: <Instagram className="h-5 w-5" />,
   twitter: <Twitter className="h-5 w-5" />,
   youtube: <Image className="h-5 w-5" />,
-  blog: <MessageSquare className="h-5 w-5" />
+  blog: <MessageSquare className="h-5 w-5" />,
 };
 
 export default function Schedule() {
@@ -64,17 +90,22 @@ export default function Schedule() {
     platform: "",
     date: "",
     time: "",
-    contentType: ""
+    contentType: "",
   });
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleSaveEvent = () => {
     // Validation
-    if (!newEvent.title || !newEvent.platform || !newEvent.date || !newEvent.time) {
+    if (
+      !newEvent.title ||
+      !newEvent.platform ||
+      !newEvent.date ||
+      !newEvent.time
+    ) {
       toast({
         variant: "destructive",
         title: "خطا",
-        description: "لطفا همه فیلدهای ضروری را پر کنید."
+        description: "لطفا همه فیلدهای ضروری را پر کنید.",
       });
       return;
     }
@@ -82,7 +113,7 @@ export default function Schedule() {
     const event = {
       id: events.length + 1,
       ...newEvent,
-      status: "scheduled"
+      status: "scheduled",
     };
 
     setEvents([...events, event]);
@@ -91,7 +122,7 @@ export default function Schedule() {
 
     toast({
       title: "محتوا زمانبندی شد",
-      description: "محتوای شما با موفقیت زمانبندی شد."
+      description: "محتوای شما با موفقیت زمانبندی شد.",
     });
   };
 
@@ -102,25 +133,25 @@ export default function Schedule() {
       platform: "",
       date: "",
       time: "",
-      contentType: ""
+      contentType: "",
     });
   };
 
   const handleDateSelect = (selectedDate: Date | undefined) => {
     setDate(selectedDate);
     if (selectedDate) {
-      const formattedDate = selectedDate.toISOString().split('T')[0];
+      const formattedDate = selectedDate.toISOString().split("T")[0];
       setNewEvent({ ...newEvent, date: formattedDate });
     }
   };
 
   // Filter events for the selected date
   const filteredEvents = date
-    ? events.filter(event => event.date === date.toISOString().split('T')[0])
+    ? events.filter((event) => event.date === date.toISOString().split("T")[0])
     : events;
 
   return (
-    <PageLayout>
+    <>
       <div className="container py-8 animate-fade-in">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
           <h1 className="text-3xl font-bold">زمانبندی محتوا</h1>
@@ -140,28 +171,40 @@ export default function Schedule() {
               </DialogHeader>
               <div className="grid gap-4 py-4">
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="title" className="text-left">عنوان</Label>
+                  <Label htmlFor="title" className="text-left">
+                    عنوان
+                  </Label>
                   <Input
                     id="title"
                     value={newEvent.title}
-                    onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
+                    onChange={(e) =>
+                      setNewEvent({ ...newEvent, title: e.target.value })
+                    }
                     className="col-span-3"
                   />
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="description" className="text-left">توضیحات</Label>
+                  <Label htmlFor="description" className="text-left">
+                    توضیحات
+                  </Label>
                   <Textarea
                     id="description"
                     value={newEvent.description}
-                    onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })}
+                    onChange={(e) =>
+                      setNewEvent({ ...newEvent, description: e.target.value })
+                    }
                     className="col-span-3"
                   />
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="platform" className="text-left">پلتفرم</Label>
+                  <Label htmlFor="platform" className="text-left">
+                    پلتفرم
+                  </Label>
                   <Select
                     value={newEvent.platform}
-                    onValueChange={(value) => setNewEvent({ ...newEvent, platform: value })}
+                    onValueChange={(value) =>
+                      setNewEvent({ ...newEvent, platform: value })
+                    }
                   >
                     <SelectTrigger id="platform" className="col-span-3">
                       <SelectValue placeholder="انتخاب پلتفرم" />
@@ -175,10 +218,14 @@ export default function Schedule() {
                   </Select>
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="contentType" className="text-left">نوع محتوا</Label>
+                  <Label htmlFor="contentType" className="text-left">
+                    نوع محتوا
+                  </Label>
                   <Select
                     value={newEvent.contentType}
-                    onValueChange={(value) => setNewEvent({ ...newEvent, contentType: value })}
+                    onValueChange={(value) =>
+                      setNewEvent({ ...newEvent, contentType: value })
+                    }
                   >
                     <SelectTrigger id="contentType" className="col-span-3">
                       <SelectValue placeholder="انتخاب نوع محتوا" />
@@ -204,18 +251,27 @@ export default function Schedule() {
                   </div>
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="time" className="text-left">زمان انتشار</Label>
+                  <Label htmlFor="time" className="text-left">
+                    زمان انتشار
+                  </Label>
                   <Input
                     id="time"
                     type="time"
                     value={newEvent.time}
-                    onChange={(e) => setNewEvent({ ...newEvent, time: e.target.value })}
+                    onChange={(e) =>
+                      setNewEvent({ ...newEvent, time: e.target.value })
+                    }
                     className="col-span-3"
                   />
                 </div>
               </div>
               <DialogFooter>
-                <Button variant="outline" onClick={() => setIsDialogOpen(false)}>لغو</Button>
+                <Button
+                  variant="outline"
+                  onClick={() => setIsDialogOpen(false)}
+                >
+                  لغو
+                </Button>
                 <Button onClick={handleSaveEvent}>ذخیره</Button>
               </DialogFooter>
             </DialogContent>
@@ -228,7 +284,8 @@ export default function Schedule() {
               <CardHeader>
                 <CardTitle>تقویم</CardTitle>
                 <CardDescription>
-                  تاریخ مورد نظر را برای مشاهده محتواهای زمانبندی شده انتخاب کنید.
+                  تاریخ مورد نظر را برای مشاهده محتواهای زمانبندی شده انتخاب
+                  کنید.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -241,13 +298,22 @@ export default function Schedule() {
                 />
                 <div className="mt-4 space-y-2">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">کل محتواهای زمانبندی شده</span>
+                    <span className="text-muted-foreground">
+                      کل محتواهای زمانبندی شده
+                    </span>
                     <span className="font-medium">{events.length}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">محتواهای امروز</span>
+                    <span className="text-muted-foreground">
+                      محتواهای امروز
+                    </span>
                     <span className="font-medium">
-                      {events.filter(e => e.date === new Date().toISOString().split('T')[0]).length}
+                      {
+                        events.filter(
+                          (e) =>
+                            e.date === new Date().toISOString().split("T")[0]
+                        ).length
+                      }
                     </span>
                   </div>
                 </div>
@@ -261,9 +327,10 @@ export default function Schedule() {
                 <CardTitle>محتواهای زمانبندی شده</CardTitle>
                 <CardDescription>
                   {date
-                    ? `محتواهای زمانبندی شده برای تاریخ ${new Intl.DateTimeFormat('fa-IR').format(date)}`
-                    : "همه محتواهای زمانبندی شده"
-                  }
+                    ? `محتواهای زمانبندی شده برای تاریخ ${new Intl.DateTimeFormat(
+                        "fa-IR"
+                      ).format(date)}`
+                    : "همه محتواهای زمانبندی شده"}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -274,22 +341,32 @@ export default function Schedule() {
                         <div className="flex items-start justify-between mb-4">
                           <div className="flex items-start gap-3">
                             <div className="bg-primary/10 p-2 rounded-full shrink-0">
-                              {platformIcons[event.platform as keyof typeof platformIcons] || <Share className="h-5 w-5" />}
+                              {platformIcons[
+                                event.platform as keyof typeof platformIcons
+                              ] || <Share className="h-5 w-5" />}
                             </div>
                             <div>
                               <h3 className="font-medium">{event.title}</h3>
-                              <p className="text-sm text-muted-foreground">{event.description}</p>
+                              <p className="text-sm text-muted-foreground">
+                                {event.description}
+                              </p>
                             </div>
                           </div>
                           <div className="bg-secondary/50 px-2 py-1 rounded text-xs font-medium">
-                            {event.status === "scheduled" ? "زمانبندی شده" : "منتشر شده"}
+                            {event.status === "scheduled"
+                              ? "زمانبندی شده"
+                              : "منتشر شده"}
                           </div>
                         </div>
                         <div className="flex items-center justify-between text-sm">
                           <div className="flex items-center gap-4">
                             <div className="flex items-center gap-1">
                               <CalendarIcon className="h-4 w-4 text-muted-foreground" />
-                              <span>{new Date(event.date).toLocaleDateString('fa-IR')}</span>
+                              <span>
+                                {new Date(event.date).toLocaleDateString(
+                                  "fa-IR"
+                                )}
+                              </span>
                             </div>
                             <div className="flex items-center gap-1">
                               <Clock className="h-4 w-4 text-muted-foreground" />
@@ -297,8 +374,16 @@ export default function Schedule() {
                             </div>
                           </div>
                           <div className="flex gap-2">
-                            <Button variant="outline" size="sm">ویرایش</Button>
-                            <Button variant="outline" size="sm" className="text-destructive hover:text-destructive">حذف</Button>
+                            <Button variant="outline" size="sm">
+                              ویرایش
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="text-destructive hover:text-destructive"
+                            >
+                              حذف
+                            </Button>
                           </div>
                         </div>
                       </div>
@@ -308,7 +393,11 @@ export default function Schedule() {
                   <div className="text-center py-12 text-muted-foreground">
                     <CalendarIcon className="h-12 w-12 mb-4 mx-auto opacity-50" />
                     <p>برای این تاریخ محتوایی زمانبندی نشده است.</p>
-                    <Button variant="outline" className="mt-4" onClick={() => setIsDialogOpen(true)}>
+                    <Button
+                      variant="outline"
+                      className="mt-4"
+                      onClick={() => setIsDialogOpen(true)}
+                    >
                       افزودن محتوای جدید
                     </Button>
                   </div>
@@ -318,6 +407,6 @@ export default function Schedule() {
           </div>
         </div>
       </div>
-    </PageLayout>
+    </>
   );
 }

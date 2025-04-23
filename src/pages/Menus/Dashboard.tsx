@@ -1,9 +1,20 @@
-
 import { useEffect, useState } from "react";
-import { PageLayout } from "@/components/layout/PageLayout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowUp, TrendingUp, User, Calendar, MessageSquare, Image } from "lucide-react";
+import {
+  ArrowUp,
+  TrendingUp,
+  User,
+  Calendar,
+  MessageSquare,
+  Image,
+} from "lucide-react";
 
 // Mock data for demonstration
 const mockStats = {
@@ -12,7 +23,7 @@ const mockStats = {
   totalEngagement: 5678,
   engagementRate: 3.2,
   totalPosts: 87,
-  scheduledPosts: 5
+  scheduledPosts: 5,
 };
 
 const mockPlatforms = [
@@ -40,21 +51,27 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <PageLayout>
+    <>
       <div className="container py-8 animate-fade-in">
         <h1 className="text-3xl font-bold mb-8">داشبورد</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-lg font-medium">دنبال‌کنندگان</CardTitle>
+              <CardTitle className="text-lg font-medium">
+                دنبال‌کنندگان
+              </CardTitle>
               <User className="h-5 w-5 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold">{mockStats.totalFollowers.toLocaleString('fa-IR')}</div>
+              <div className="text-3xl font-bold">
+                {mockStats.totalFollowers.toLocaleString("fa-IR")}
+              </div>
               <div className="text-sm text-muted-foreground mt-2 flex items-center">
                 <ArrowUp className="h-4 w-4 ml-1 text-green-500" />
-                <span className="text-green-500">{mockStats.newFollowers.toLocaleString('fa-IR')}</span>
+                <span className="text-green-500">
+                  {mockStats.newFollowers.toLocaleString("fa-IR")}
+                </span>
                 <span className="mr-1"> جدید در ماه اخیر</span>
               </div>
             </CardContent>
@@ -65,19 +82,26 @@ export default function Dashboard() {
               <TrendingUp className="h-5 w-5 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold">{mockStats.engagementRate}%</div>
+              <div className="text-3xl font-bold">
+                {mockStats.engagementRate}%
+              </div>
               <div className="text-sm text-muted-foreground mt-2">
-                {mockStats.totalEngagement.toLocaleString('fa-IR')} تعامل در ماه اخیر
+                {mockStats.totalEngagement.toLocaleString("fa-IR")} تعامل در ماه
+                اخیر
               </div>
             </CardContent>
           </Card>
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-lg font-medium">زمانبندی محتوا</CardTitle>
+              <CardTitle className="text-lg font-medium">
+                زمانبندی محتوا
+              </CardTitle>
               <Calendar className="h-5 w-5 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold">{mockStats.scheduledPosts.toLocaleString('fa-IR')}</div>
+              <div className="text-3xl font-bold">
+                {mockStats.scheduledPosts.toLocaleString("fa-IR")}
+              </div>
               <div className="text-sm text-muted-foreground mt-2">
                 پست زمانبندی شده برای انتشار
               </div>
@@ -94,21 +118,30 @@ export default function Dashboard() {
           <TabsContent value="platforms">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {mockPlatforms.map((platform) => (
-                <Card key={platform.name} className="hover:shadow-md transition-shadow">
+                <Card
+                  key={platform.name}
+                  className="hover:shadow-md transition-shadow"
+                >
                   <CardHeader>
                     <CardTitle className="text-xl">{platform.name}</CardTitle>
-                    <CardDescription>{platform.followers.toLocaleString('fa-IR')} دنبال کننده</CardDescription>
+                    <CardDescription>
+                      {platform.followers.toLocaleString("fa-IR")} دنبال کننده
+                    </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">رشد ماهانه</span>
+                      <span className="text-sm text-muted-foreground">
+                        رشد ماهانه
+                      </span>
                       <span className="text-green-500 flex items-center">
                         <ArrowUp className="h-3 w-3 ml-1" />
                         {platform.growth}%
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">نرخ تعامل</span>
+                      <span className="text-sm text-muted-foreground">
+                        نرخ تعامل
+                      </span>
                       <span>{platform.engagement}%</span>
                     </div>
                   </CardContent>
@@ -120,12 +153,17 @@ export default function Dashboard() {
             <Card>
               <CardHeader>
                 <CardTitle>ایده‌های پیشنهادی برای محتوا</CardTitle>
-                <CardDescription>بر اساس تحلیل محتواهای موفق قبلی و روندهای فعلی</CardDescription>
+                <CardDescription>
+                  بر اساس تحلیل محتواهای موفق قبلی و روندهای فعلی
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-4">
                   {mockIdeas.map((idea, index) => (
-                    <li key={index} className="p-4 border rounded-md flex items-center gap-3">
+                    <li
+                      key={index}
+                      className="p-4 border rounded-md flex items-center gap-3"
+                    >
                       <div className="bg-primary/10 p-2 rounded-full">
                         <MessageSquare className="h-5 w-5 text-primary" />
                       </div>
@@ -140,7 +178,9 @@ export default function Dashboard() {
             <Card>
               <CardHeader>
                 <CardTitle>زمانبندی محتوای هفته</CardTitle>
-                <CardDescription>محتواهای زمانبندی شده برای انتشار</CardDescription>
+                <CardDescription>
+                  محتواهای زمانبندی شده برای انتشار
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -151,25 +191,31 @@ export default function Dashboard() {
                       </div>
                       <div>
                         <div className="font-medium">معرفی محصول جدید</div>
-                        <div className="text-sm text-muted-foreground">اینستاگرام</div>
+                        <div className="text-sm text-muted-foreground">
+                          اینستاگرام
+                        </div>
                       </div>
                     </div>
                     <div className="text-sm">دوشنبه، ساعت 18:00</div>
                   </div>
-                  
+
                   <div className="p-4 border rounded-md flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="bg-primary/10 p-2 rounded-full">
                         <MessageSquare className="h-5 w-5 text-primary" />
                       </div>
                       <div>
-                        <div className="font-medium">مقاله آموزشی هوش مصنوعی</div>
-                        <div className="text-sm text-muted-foreground">وبلاگ</div>
+                        <div className="font-medium">
+                          مقاله آموزشی هوش مصنوعی
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          وبلاگ
+                        </div>
                       </div>
                     </div>
                     <div className="text-sm">چهارشنبه، ساعت 10:00</div>
                   </div>
-                  
+
                   <div className="p-4 border rounded-md flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="bg-primary/10 p-2 rounded-full">
@@ -177,7 +223,9 @@ export default function Dashboard() {
                       </div>
                       <div>
                         <div className="font-medium">مصاحبه با کارشناس</div>
-                        <div className="text-sm text-muted-foreground">یوتیوب</div>
+                        <div className="text-sm text-muted-foreground">
+                          یوتیوب
+                        </div>
                       </div>
                     </div>
                     <div className="text-sm">جمعه، ساعت 16:00</div>
@@ -188,6 +236,6 @@ export default function Dashboard() {
           </TabsContent>
         </Tabs>
       </div>
-    </PageLayout>
+    </>
   );
 }

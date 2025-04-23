@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/use-auth";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
@@ -13,30 +12,42 @@ export function Header() {
       <div className="container flex items-center justify-between">
         <div className="flex items-center gap-6">
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-gradient">ایدی پرداز</span>
+            <span className="text-2xl font-bold text-gradient">ایده‌ساز</span>
           </Link>
-          
+
           {isAuthenticated && (
             <nav className="hidden md:flex items-center gap-5">
-              <Link to="/dashboard" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+              <Link
+                to="/dashboard"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground"
+              >
                 داشبورد
               </Link>
-              <Link to="/ideas" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+              <Link
+                to="/ideas"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground"
+              >
                 ایده‌ها
               </Link>
-              <Link to="/schedule" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+              <Link
+                to="/schedule"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground"
+              >
                 زمان‌بندی
               </Link>
-              <Link to="/analytics" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+              <Link
+                to="/analytics"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground"
+              >
                 آنالیز
               </Link>
             </nav>
           )}
         </div>
-        
+
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          
+
           {isAuthenticated ? (
             <div className="flex items-center gap-3">
               <Button variant="ghost" size="icon">
@@ -48,7 +59,9 @@ export function Header() {
               <Button variant="ghost" size="icon">
                 <Settings className="h-5 w-5" />
               </Button>
-              <Button onClick={logout} variant="outline">خروج</Button>
+              <Button onClick={logout} variant="outline">
+                خروج
+              </Button>
             </div>
           ) : (
             <div className="flex items-center gap-2">

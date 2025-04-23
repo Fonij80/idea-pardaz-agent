@@ -1,34 +1,50 @@
-
 import { useState } from "react";
-import { PageLayout } from "@/components/layout/PageLayout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowUp, TrendingUp, TrendingDown, MessageSquare, Share } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  ArrowUp,
+  TrendingUp,
+  TrendingDown,
+  MessageSquare,
+  Share,
+} from "lucide-react";
 
 // Mock analytics data
 const mockPerformance = {
   followers: {
     total: 15420,
     change: 324,
-    percentage: 2.1
+    percentage: 2.1,
   },
   engagement: {
     total: 2345,
     change: 156,
-    percentage: 7.1
+    percentage: 7.1,
   },
   impressions: {
     total: 45600,
     change: -890,
-    percentage: -1.9
+    percentage: -1.9,
   },
   comments: {
     total: 987,
     change: 54,
-    percentage: 5.8
-  }
+    percentage: 5.8,
+  },
 };
 
 // Mock top performing content
@@ -40,7 +56,7 @@ const mockTopContent = [
     type: "کاروسل",
     engagement: 1245,
     comments: 87,
-    shares: 32
+    shares: 32,
   },
   {
     id: 2,
@@ -49,7 +65,7 @@ const mockTopContent = [
     type: "ویدئو",
     engagement: 895,
     comments: 63,
-    shares: 41
+    shares: 41,
   },
   {
     id: 3,
@@ -58,8 +74,8 @@ const mockTopContent = [
     type: "مقاله",
     engagement: 734,
     comments: 46,
-    shares: 28
-  }
+    shares: 28,
+  },
 ];
 
 // Mock comments data
@@ -70,15 +86,16 @@ const mockComments = [
     content: "محتوای بسیار مفید و کاربردی. منتظر مطالب بیشتر شما هستم!",
     post: "معرفی تکنیک‌های جدید بازاریابی دیجیتال",
     platform: "اینستاگرام",
-    sentiment: "مثبت"
+    sentiment: "مثبت",
   },
   {
     id: 2,
     user: "علی رضایی",
-    content: "آیا در مورد تکنیک‌های سئو هم مطلبی دارید؟ این حوزه برام خیلی جذابه.",
+    content:
+      "آیا در مورد تکنیک‌های سئو هم مطلبی دارید؟ این حوزه برام خیلی جذابه.",
     post: "آموزش کاربردهای هوش مصنوعی در کسب و کار",
     platform: "یوتیوب",
-    sentiment: "خنثی"
+    sentiment: "خنثی",
   },
   {
     id: 3,
@@ -86,8 +103,8 @@ const mockComments = [
     content: "اطلاعات خیلی سطحی بود. انتظار داشتم بیشتر به جزئیات پرداخته شود.",
     post: "۷ روش افزایش بهره‌وری در محیط کار",
     platform: "وبلاگ",
-    sentiment: "منفی"
-  }
+    sentiment: "منفی",
+  },
 ];
 
 // Mock audience demographics
@@ -97,19 +114,19 @@ const mockDemographics = {
     { group: "۲۵-۳۴", percentage: 42 },
     { group: "۳۵-۴۴", percentage: 28 },
     { group: "۴۵-۵۴", percentage: 10 },
-    { group: "۵۵+", percentage: 5 }
+    { group: "۵۵+", percentage: 5 },
   ],
   gender: [
     { type: "مرد", percentage: 58 },
-    { type: "زن", percentage: 42 }
+    { type: "زن", percentage: 42 },
   ],
   location: [
     { city: "تهران", percentage: 45 },
     { city: "اصفهان", percentage: 15 },
     { city: "مشهد", percentage: 12 },
     { city: "شیراز", percentage: 8 },
-    { city: "سایر", percentage: 20 }
-  ]
+    { city: "سایر", percentage: 20 },
+  ],
 };
 
 export default function Analytics() {
@@ -117,7 +134,7 @@ export default function Analytics() {
   const [timeRange, setTimeRange] = useState<string>("month");
 
   return (
-    <PageLayout>
+    <>
       <div className="container py-8 animate-fade-in">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
           <h1 className="text-3xl font-bold">آنالیز عملکرد</h1>
@@ -151,12 +168,22 @@ export default function Analytics() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg font-medium">دنبال‌کنندگان</CardTitle>
+              <CardTitle className="text-lg font-medium">
+                دنبال‌کنندگان
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold">{mockPerformance.followers.total.toLocaleString('fa-IR')}</div>
+              <div className="text-3xl font-bold">
+                {mockPerformance.followers.total.toLocaleString("fa-IR")}
+              </div>
               <div className="mt-2 flex items-center text-sm">
-                <div className={`flex items-center ${mockPerformance.followers.change > 0 ? 'text-green-500' : 'text-red-500'}`}>
+                <div
+                  className={`flex items-center ${
+                    mockPerformance.followers.change > 0
+                      ? "text-green-500"
+                      : "text-red-500"
+                  }`}
+                >
                   {mockPerformance.followers.change > 0 ? (
                     <ArrowUp className="h-4 w-4 ml-1" />
                   ) : (
@@ -165,7 +192,17 @@ export default function Analytics() {
                   {mockPerformance.followers.change > 0 ? "+" : ""}
                   {mockPerformance.followers.percentage}%
                 </div>
-                <div className="text-muted-foreground mr-1">در {timeRange === 'week' ? 'هفته' : timeRange === 'month' ? 'ماه' : timeRange === 'quarter' ? 'سه ماه' : 'سال'} اخیر</div>
+                <div className="text-muted-foreground mr-1">
+                  در{" "}
+                  {timeRange === "week"
+                    ? "هفته"
+                    : timeRange === "month"
+                    ? "ماه"
+                    : timeRange === "quarter"
+                    ? "سه ماه"
+                    : "سال"}{" "}
+                  اخیر
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -174,9 +211,17 @@ export default function Analytics() {
               <CardTitle className="text-lg font-medium">تعامل</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold">{mockPerformance.engagement.total.toLocaleString('fa-IR')}</div>
+              <div className="text-3xl font-bold">
+                {mockPerformance.engagement.total.toLocaleString("fa-IR")}
+              </div>
               <div className="mt-2 flex items-center text-sm">
-                <div className={`flex items-center ${mockPerformance.engagement.change > 0 ? 'text-green-500' : 'text-red-500'}`}>
+                <div
+                  className={`flex items-center ${
+                    mockPerformance.engagement.change > 0
+                      ? "text-green-500"
+                      : "text-red-500"
+                  }`}
+                >
                   {mockPerformance.engagement.change > 0 ? (
                     <ArrowUp className="h-4 w-4 ml-1" />
                   ) : (
@@ -185,7 +230,17 @@ export default function Analytics() {
                   {mockPerformance.engagement.change > 0 ? "+" : ""}
                   {mockPerformance.engagement.percentage}%
                 </div>
-                <div className="text-muted-foreground mr-1">در {timeRange === 'week' ? 'هفته' : timeRange === 'month' ? 'ماه' : timeRange === 'quarter' ? 'سه ماه' : 'سال'} اخیر</div>
+                <div className="text-muted-foreground mr-1">
+                  در{" "}
+                  {timeRange === "week"
+                    ? "هفته"
+                    : timeRange === "month"
+                    ? "ماه"
+                    : timeRange === "quarter"
+                    ? "سه ماه"
+                    : "سال"}{" "}
+                  اخیر
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -194,9 +249,17 @@ export default function Analytics() {
               <CardTitle className="text-lg font-medium">بازدید</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold">{mockPerformance.impressions.total.toLocaleString('fa-IR')}</div>
+              <div className="text-3xl font-bold">
+                {mockPerformance.impressions.total.toLocaleString("fa-IR")}
+              </div>
               <div className="mt-2 flex items-center text-sm">
-                <div className={`flex items-center ${mockPerformance.impressions.change > 0 ? 'text-green-500' : 'text-red-500'}`}>
+                <div
+                  className={`flex items-center ${
+                    mockPerformance.impressions.change > 0
+                      ? "text-green-500"
+                      : "text-red-500"
+                  }`}
+                >
                   {mockPerformance.impressions.change > 0 ? (
                     <ArrowUp className="h-4 w-4 ml-1" />
                   ) : (
@@ -205,7 +268,17 @@ export default function Analytics() {
                   {mockPerformance.impressions.change > 0 ? "+" : ""}
                   {mockPerformance.impressions.percentage}%
                 </div>
-                <div className="text-muted-foreground mr-1">در {timeRange === 'week' ? 'هفته' : timeRange === 'month' ? 'ماه' : timeRange === 'quarter' ? 'سه ماه' : 'سال'} اخیر</div>
+                <div className="text-muted-foreground mr-1">
+                  در{" "}
+                  {timeRange === "week"
+                    ? "هفته"
+                    : timeRange === "month"
+                    ? "ماه"
+                    : timeRange === "quarter"
+                    ? "سه ماه"
+                    : "سال"}{" "}
+                  اخیر
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -214,9 +287,17 @@ export default function Analytics() {
               <CardTitle className="text-lg font-medium">نظرات</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold">{mockPerformance.comments.total.toLocaleString('fa-IR')}</div>
+              <div className="text-3xl font-bold">
+                {mockPerformance.comments.total.toLocaleString("fa-IR")}
+              </div>
               <div className="mt-2 flex items-center text-sm">
-                <div className={`flex items-center ${mockPerformance.comments.change > 0 ? 'text-green-500' : 'text-red-500'}`}>
+                <div
+                  className={`flex items-center ${
+                    mockPerformance.comments.change > 0
+                      ? "text-green-500"
+                      : "text-red-500"
+                  }`}
+                >
                   {mockPerformance.comments.change > 0 ? (
                     <ArrowUp className="h-4 w-4 ml-1" />
                   ) : (
@@ -225,7 +306,17 @@ export default function Analytics() {
                   {mockPerformance.comments.change > 0 ? "+" : ""}
                   {mockPerformance.comments.percentage}%
                 </div>
-                <div className="text-muted-foreground mr-1">در {timeRange === 'week' ? 'هفته' : timeRange === 'month' ? 'ماه' : timeRange === 'quarter' ? 'سه ماه' : 'سال'} اخیر</div>
+                <div className="text-muted-foreground mr-1">
+                  در{" "}
+                  {timeRange === "week"
+                    ? "هفته"
+                    : timeRange === "month"
+                    ? "ماه"
+                    : timeRange === "quarter"
+                    ? "سه ماه"
+                    : "سال"}{" "}
+                  اخیر
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -241,7 +332,9 @@ export default function Analytics() {
             <Card>
               <CardHeader>
                 <CardTitle>محتواهای با بیشترین تعامل</CardTitle>
-                <CardDescription>محتواهایی که بیشترین میزان تعامل را داشته‌اند.</CardDescription>
+                <CardDescription>
+                  محتواهایی که بیشترین میزان تعامل را داشته‌اند.
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -258,20 +351,34 @@ export default function Analytics() {
                       </div>
                       <div className="grid grid-cols-3 gap-2">
                         <div className="p-2 bg-secondary/50 rounded-md text-center">
-                          <div className="text-xs text-muted-foreground">تعامل</div>
-                          <div className="font-medium">{content.engagement.toLocaleString('fa-IR')}</div>
+                          <div className="text-xs text-muted-foreground">
+                            تعامل
+                          </div>
+                          <div className="font-medium">
+                            {content.engagement.toLocaleString("fa-IR")}
+                          </div>
                         </div>
                         <div className="p-2 bg-secondary/50 rounded-md text-center">
-                          <div className="text-xs text-muted-foreground">نظرات</div>
-                          <div className="font-medium">{content.comments.toLocaleString('fa-IR')}</div>
+                          <div className="text-xs text-muted-foreground">
+                            نظرات
+                          </div>
+                          <div className="font-medium">
+                            {content.comments.toLocaleString("fa-IR")}
+                          </div>
                         </div>
                         <div className="p-2 bg-secondary/50 rounded-md text-center">
-                          <div className="text-xs text-muted-foreground">اشتراک‌گذاری</div>
-                          <div className="font-medium">{content.shares.toLocaleString('fa-IR')}</div>
+                          <div className="text-xs text-muted-foreground">
+                            اشتراک‌گذاری
+                          </div>
+                          <div className="font-medium">
+                            {content.shares.toLocaleString("fa-IR")}
+                          </div>
                         </div>
                       </div>
                       <div className="mt-4 flex justify-end">
-                        <Button variant="outline" size="sm">تحلیل بیشتر</Button>
+                        <Button variant="outline" size="sm">
+                          تحلیل بیشتر
+                        </Button>
                       </div>
                     </div>
                   ))}
@@ -295,9 +402,9 @@ export default function Analytics() {
                           <span>{item.percentage}%</span>
                         </div>
                         <div className="w-full bg-secondary h-2 rounded-full">
-                          <div 
-                            className="bg-primary h-2 rounded-full" 
-                            style={{ width: `${item.percentage}%` }} 
+                          <div
+                            className="bg-primary h-2 rounded-full"
+                            style={{ width: `${item.percentage}%` }}
                           />
                         </div>
                       </div>
@@ -320,9 +427,11 @@ export default function Analytics() {
                           <span>{item.percentage}%</span>
                         </div>
                         <div className="w-full bg-secondary h-2 rounded-full">
-                          <div 
-                            className={`${index === 0 ? 'bg-blue-500' : 'bg-purple-500'} h-2 rounded-full`}
-                            style={{ width: `${item.percentage}%` }} 
+                          <div
+                            className={`${
+                              index === 0 ? "bg-blue-500" : "bg-purple-500"
+                            } h-2 rounded-full`}
+                            style={{ width: `${item.percentage}%` }}
                           />
                         </div>
                       </div>
@@ -345,9 +454,9 @@ export default function Analytics() {
                           <span>{item.percentage}%</span>
                         </div>
                         <div className="w-full bg-secondary h-2 rounded-full">
-                          <div 
-                            className="bg-primary h-2 rounded-full" 
-                            style={{ width: `${item.percentage}%` }} 
+                          <div
+                            className="bg-primary h-2 rounded-full"
+                            style={{ width: `${item.percentage}%` }}
                           />
                         </div>
                       </div>
@@ -361,7 +470,9 @@ export default function Analytics() {
             <Card>
               <CardHeader>
                 <CardTitle>تحلیل نظرات</CardTitle>
-                <CardDescription>تحلیل احساسات و بازخوردهای مخاطبان</CardDescription>
+                <CardDescription>
+                  تحلیل احساسات و بازخوردهای مخاطبان
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
@@ -374,15 +485,17 @@ export default function Analytics() {
                           </div>
                           <div>
                             <div className="font-medium">{comment.user}</div>
-                            <div className="text-xs text-muted-foreground">{comment.platform}</div>
+                            <div className="text-xs text-muted-foreground">
+                              {comment.platform}
+                            </div>
                           </div>
                         </div>
-                        <div 
+                        <div
                           className={`text-xs px-2 py-1 rounded-full ${
-                            comment.sentiment === "مثبت" 
-                              ? "bg-green-100 text-green-800" 
-                              : comment.sentiment === "منفی" 
-                              ? "bg-red-100 text-red-800" 
+                            comment.sentiment === "مثبت"
+                              ? "bg-green-100 text-green-800"
+                              : comment.sentiment === "منفی"
+                              ? "bg-red-100 text-red-800"
                               : "bg-blue-100 text-blue-800"
                           } dark:bg-opacity-20`}
                         >
@@ -417,6 +530,6 @@ export default function Analytics() {
           </TabsContent>
         </Tabs>
       </div>
-    </PageLayout>
+    </>
   );
 }

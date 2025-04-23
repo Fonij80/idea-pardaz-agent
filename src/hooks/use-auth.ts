@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 
 type User = {
@@ -16,11 +15,11 @@ export function useAuth() {
   useEffect(() => {
     // Check if user is saved in localStorage for demo purposes
     const storedUser = localStorage.getItem("user");
-    
+
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
-    
+
     setIsLoading(false);
   }, []);
 
@@ -31,11 +30,11 @@ export function useAuth() {
         if (email && password) {
           const mockUser: User = {
             id: "123",
-            username: email.split('@')[0],
+            username: email.split("@")[0],
             email: email,
-            name: "کاربر ایدی پرداز",
+            name: "کاربر ایده‌ساز",
           };
-          
+
           localStorage.setItem("user", JSON.stringify(mockUser));
           setUser(mockUser);
           resolve(mockUser);
@@ -51,18 +50,22 @@ export function useAuth() {
     setUser(null);
   };
 
-  const register = (email: string, password: string, name: string): Promise<User> => {
+  const register = (
+    email: string,
+    password: string,
+    name: string
+  ): Promise<User> => {
     return new Promise((resolve, reject) => {
       // This is a mock register - in a real app, you would call your Django API
       setTimeout(() => {
         if (email && password) {
           const mockUser: User = {
             id: "123",
-            username: email.split('@')[0],
+            username: email.split("@")[0],
             email: email,
             name: name,
           };
-          
+
           localStorage.setItem("user", JSON.stringify(mockUser));
           setUser(mockUser);
           resolve(mockUser);
@@ -79,6 +82,6 @@ export function useAuth() {
     login,
     logout,
     register,
-    isAuthenticated: !!user
+    isAuthenticated: !!user,
   };
 }
