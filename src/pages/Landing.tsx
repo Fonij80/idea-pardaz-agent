@@ -25,13 +25,8 @@ export default function Landing() {
               className="flex flex-wrap gap-4 animate-fade-in"
               style={{ animationDelay: "300ms" }}
             >
-              <Link to="/register">
-                <Button size="lg">شروع رایگان</Button>
-              </Link>
               <Link to="/login">
-                <Button size="lg" variant="outline">
-                  ورود به حساب کاربری
-                </Button>
+                <Button size="lg">شروع رایگان</Button>
               </Link>
             </div>
           </div>
@@ -144,7 +139,7 @@ export default function Landing() {
               با ایده‌ساز، دیگر نگران ایده‌های جدید، زمانبندی و تحلیل نباشید.
               تمام این کارها را به دستیار هوشمند خود بسپارید.
             </p>
-            <Link to="/register">
+            <Link to="/login">
               <Button size="lg" className="px-8 py-6 text-lg">
                 همین حالا شروع کنید
               </Button>
