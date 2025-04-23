@@ -109,7 +109,7 @@ export default function Dashboard() {
           </Card>
         </div>
 
-        <Tabs defaultValue="platforms" className="mb-8">
+        <Tabs defaultValue="platforms" className="mb-8" dir="rtl">
           <TabsList className="mb-4">
             <TabsTrigger value="platforms">پلتفرم‌ها</TabsTrigger>
             <TabsTrigger value="ideas">ایده‌های پیشنهادی</TabsTrigger>

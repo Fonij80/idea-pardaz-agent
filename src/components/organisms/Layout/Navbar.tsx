@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/use-auth";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { Button } from "@/components/ui/button";
-import { Calendar, Menu, MessageSquare, Settings, X } from "lucide-react"; // Added Menu and X icons
+import { Calendar, Menu, MessageSquare, Settings, X } from "lucide-react";
 import { NavigationLink, Logo } from "@/components/atoms";
 
-export function Navbar() {
+export const Navbar = () => {
   const { isAuthenticated, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -161,4 +161,4 @@ export function Navbar() {
       )}
     </>
   );
-}
+};

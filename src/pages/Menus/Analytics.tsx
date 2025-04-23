@@ -22,6 +22,7 @@ import {
   MessageSquare,
   Share,
 } from "lucide-react";
+import { FilterSelect } from "@/components/atoms";
 
 // Mock analytics data
 const mockPerformance = {
@@ -139,29 +140,29 @@ export default function Analytics() {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
           <h1 className="text-3xl font-bold">آنالیز عملکرد</h1>
           <div className="flex gap-3 mt-4 md:mt-0">
-            <Select value={platform} onValueChange={setPlatform}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="انتخاب پلتفرم" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">همه پلتفرم‌ها</SelectItem>
-                <SelectItem value="instagram">اینستاگرام</SelectItem>
-                <SelectItem value="twitter">توییتر</SelectItem>
-                <SelectItem value="youtube">یوتیوب</SelectItem>
-                <SelectItem value="blog">وبلاگ</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select value={timeRange} onValueChange={setTimeRange}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="بازه زمانی" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="week">هفته اخیر</SelectItem>
-                <SelectItem value="month">ماه اخیر</SelectItem>
-                <SelectItem value="quarter">سه ماهه اخیر</SelectItem>
-                <SelectItem value="year">سال اخیر</SelectItem>
-              </SelectContent>
-            </Select>
+            <FilterSelect
+              value={platform}
+              onValueChange={setPlatform}
+              options={[
+                { value: "all", label: "همه پلتفرم‌ها" },
+                { value: "instagram", label: "اینستاگرام" },
+                { value: "twitter", label: "توییتر" },
+                { value: "youtube", label: "یوتیوب" },
+                { value: "blog", label: "وبلاگ" },
+              ]}
+              placeholder="انتخاب پلتفرم"
+            />
+            <FilterSelect
+              value={timeRange}
+              onValueChange={setTimeRange}
+              options={[
+                { value: "week", label: "هفته اخیر" },
+                { value: "month", label: "ماه اخیر" },
+                { value: "quarter", label: "سه ماهه اخیر" },
+                { value: "year", label: "سال اخیر" },
+              ]}
+              placeholder="بازه زمانی"
+            />
           </div>
         </div>
 
@@ -322,7 +323,7 @@ export default function Analytics() {
           </Card>
         </div>
 
-        <Tabs defaultValue="content" className="mb-8">
+        <Tabs defaultValue="content" className="mb-8" dir="rtl">
           <TabsList className="mb-4">
             <TabsTrigger value="content">محتواهای برتر</TabsTrigger>
             <TabsTrigger value="audience">مخاطبین</TabsTrigger>
