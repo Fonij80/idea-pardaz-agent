@@ -5,12 +5,14 @@ import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { Calendar, Menu, MessageSquare, Settings, X } from "lucide-react";
 import { NavigationLink, Logo } from "@/components/atoms";
+import { ChatbotSidebar } from "@/components/molecules";
 
 export const Navbar = () => {
   const navigate = useNavigate();
   const { isAuthenticated, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -45,10 +47,9 @@ export const Navbar = () => {
         }`}
       >
         <div className="container flex items-center justify-between">
+          {/* left section */}
           <div className="flex items-center gap-6">
             <Logo />
-
-            {/* Desktop Navigation */}
             {isAuthenticated && (
               <nav className="hidden md:flex items-center gap-5">
                 <NavigationLink menuName="داشبورد" to="/dashboard" />
@@ -59,11 +60,12 @@ export const Navbar = () => {
             )}
           </div>
 
+          {/* right section */}
           <div className="flex items-center gap-3">
             <ThemeToggle />
-
             {isAuthenticated ? (
               <div className="flex items-center gap-3">
+                {/* desktop icons */}
                 <div className="hidden md:flex items-center gap-3">
                   <Button
                     variant="ghost"
@@ -72,13 +74,19 @@ export const Navbar = () => {
                   >
                     <Calendar className="h-5 w-5" />
                   </Button>
-                  <Button variant="ghost" size="icon">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setChatOpen(true)}
+                  >
                     <MessageSquare className="h-5 w-5" />
                   </Button>
                   <Button variant="ghost" size="icon">
                     <Settings className="h-5 w-5" />
                   </Button>
                 </div>
+
+                {/* logout & hamburger */}
                 <Button
                   onClick={logout}
                   variant="outline"
@@ -100,17 +108,15 @@ export const Navbar = () => {
                 </Button>
               </div>
             ) : (
-              <div className="flex items-center gap-2">
-                <Link to="/login">
-                  <Button>ورود/ثبت‌نام</Button>
-                </Link>
-              </div>
+              <Link to="/login">
+                <Button>ورود/ثبت‌نام</Button>
+              </Link>
             )}
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu */}
+      {/* ------------ MOBILE MENU ------------ */}
       {isAuthenticated && (
         <div
           className={`fixed top-16 inset-x-0 z-40 md:hidden mobile-menu transition-all duration-300 ease-in-out ${
@@ -139,12 +145,28 @@ export const Navbar = () => {
                 to="/analytics"
                 onClick={() => setIsOpen(false)}
               />
+
+              {/* mobile extra actions */}
               <div className="flex flex-col gap-3 pt-4 border-t">
-                <Button variant="ghost" className="justify-start">
+                <Button
+                  variant="ghost"
+                  className="justify-start"
+                  onClick={() => {
+                    setIsOpen(false);
+                    navigate("/calendar");
+                  }}
+                >
                   <Calendar className="h-5 w-5 ml-2" />
                   تقویم
                 </Button>
-                <Button variant="ghost" className="justify-start">
+                <Button
+                  variant="ghost"
+                  className="justify-start"
+                  onClick={() => {
+                    setIsOpen(false);
+                    setChatOpen(true);
+                  }}
+                >
                   <MessageSquare className="h-5 w-5 ml-2" />
                   پیام‌ها
                 </Button>
@@ -164,6 +186,9 @@ export const Navbar = () => {
           </div>
         </div>
       )}
+
+      {/* ------------ CHATBOT SIDEBAR ------------ */}
+      <ChatbotSidebar open={chatOpen} onClose={() => setChatOpen(false)} />
     </>
   );
 };

@@ -1,16 +1,4 @@
-// CalendarPage.tsx – Large grid calendar (React 18 + Tailwind + react‑multi‑date‑picker)
-// -----------------------------------------------------------------------------
-// ➊ Install deps
-//    npm i react-multi-date-picker react-date-object clsx
-// ➋ Add a global Tailwind layer override (e.g. src/index.css) to reset the day‑cell padding/flex:
-//    @layer utilities {
-//      .big-day { @apply w-16 h-16 md:w-20 md:h-20 flex items-center justify-center text-lg font-medium rounded-md transition; }
-//      .big-day:hover { @apply bg-gray-200 dark:bg-gray-700; }
-//      .ceremony   { @apply bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-200; }
-//    }
-// -----------------------------------------------------------------------------
-
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import clsx from "clsx";
 import DatePicker, { DateObject } from "react-multi-date-picker";
 import gregorian from "react-date-object/calendars/gregorian";

@@ -184,3 +184,15 @@
   padding: 2px 5px;
   font-size: 14px;
 }
+
+@layer utilities {
+  .big-day {
+    @apply w-16 h-16 md:w-20 md:h-20 flex items-center justify-center text-lg font-medium rounded-md transition;
+  }
+  .big-day:hover {
+    @apply bg-gray-200 dark:bg-gray-700;
+  }
+  .ceremony {
+    @apply bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-200;
+  }
+}
