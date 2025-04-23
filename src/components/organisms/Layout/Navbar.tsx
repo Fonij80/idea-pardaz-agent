@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/use-auth";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,7 @@ import { Calendar, Menu, MessageSquare, Settings, X } from "lucide-react";
 import { NavigationLink, Logo } from "@/components/atoms";
 
 export const Navbar = () => {
+  const navigate = useNavigate();
   const { isAuthenticated, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -64,7 +65,11 @@ export const Navbar = () => {
             {isAuthenticated ? (
               <div className="flex items-center gap-3">
                 <div className="hidden md:flex items-center gap-3">
-                  <Button variant="ghost" size="icon">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => navigate("/calendar")}
+                  >
                     <Calendar className="h-5 w-5" />
                   </Button>
                   <Button variant="ghost" size="icon">

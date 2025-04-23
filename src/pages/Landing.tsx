@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Calendar, Image, MessageSquare, TrendingUp } from "lucide-react";
 
-export default function Landing() {
+export const Landing = () => {
   return (
     <>
       {/* Hero Section */}
@@ -149,4 +149,4 @@ export default function Landing() {
       </section>
     </>
   );
-}
+};

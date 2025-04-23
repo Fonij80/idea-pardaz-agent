@@ -81,7 +81,7 @@ const platformIcons = {
   blog: <MessageSquare className="h-5 w-5" />,
 };
 
-export default function Schedule() {
+export const Schedule = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [events, setEvents] = useState(initialEvents);
   const [newEvent, setNewEvent] = useState({
@@ -409,4 +409,4 @@ export default function Schedule() {
       </div>
     </>
   );
-}
+};

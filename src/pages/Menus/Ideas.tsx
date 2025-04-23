@@ -50,7 +50,7 @@ const mockSources = [
   { title: "وبینار کاربردهای هوش مصنوعی", type: "وبینار", url: "#" },
 ];
 
-export default function Ideas() {
+export const Ideas = () => {
   const [idea, setIdea] = useState("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [sources, setSources] = useState<typeof mockSources>([]);
@@ -236,4 +236,4 @@ export default function Ideas() {
       </div>
     </>
   );
-}
+};

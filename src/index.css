@@ -159,3 +159,28 @@
 .nav-link:hover::after {
   transform: scaleX(1);
 }
+
+/* For Persian calendar */
+.rbc-calendar {
+  direction: rtl;
+}
+
+.rbc-header {
+  padding: 10px;
+}
+
+/* Date picker styling */
+.persian-datepicker .react-datepicker__input-container input {
+  text-align: center;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+/* Event styling */
+.rbc-event {
+  background-color: #3b82f6;
+  border-radius: 4px;
+  padding: 2px 5px;
+  font-size: 14px;
+}

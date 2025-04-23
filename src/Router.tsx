@@ -9,6 +9,7 @@ import {
   Schedule,
   Analytics,
   NotFound,
+  Calendar,
 } from "./pages";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "./hooks/use-auth";
@@ -78,6 +79,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Analytics />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "calendar",
+        element: (
+          <ProtectedRoute>
+            <Calendar />
           </ProtectedRoute>
         ),
       },

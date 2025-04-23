@@ -1,8 +1,9 @@
-export { default as Landing } from "./Landing";
-export { default as Login } from "./Authentication/Login";
-export { default as Register } from "./Authentication/Register";
-export { default as Dashboard } from "./Menus/Dashboard";
-export { default as Ideas } from "./Menus/Ideas";
-export { default as Analytics } from "./Menus/Analytics";
-export { default as NotFound } from "./Menus/NotFound";
-export { default as Schedule } from "./Menus/Schedule";
+export { Landing } from "./Landing";
+export { Login } from "./Authentication/Login";
+export { Register } from "./Authentication/Register";
+export { Dashboard } from "./Menus/Dashboard";
+export { Ideas } from "./Menus/Ideas";
+export { Analytics } from "./Menus/Analytics";
+export { NotFound } from "./Menus/NotFound";
+export { Schedule } from "./Menus/Schedule";
+export { Calendar } from "./Menus/Calendar";

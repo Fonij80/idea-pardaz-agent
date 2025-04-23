@@ -38,7 +38,7 @@ const mockIdeas = [
   "مصاحبه با متخصصان حوزه دیجیتال مارکتینگ",
 ];
 
-export default function Dashboard() {
+export const Dashboard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -238,4 +238,4 @@ export default function Dashboard() {
       </div>
     </>
   );
-}
+};

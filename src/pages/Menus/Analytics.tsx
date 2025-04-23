@@ -130,7 +130,7 @@ const mockDemographics = {
   ],
 };
 
-export default function Analytics() {
+export const Analytics = () => {
   const [platform, setPlatform] = useState<string>("all");
   const [timeRange, setTimeRange] = useState<string>("month");
 
@@ -533,4 +533,4 @@ export default function Analytics() {
       </div>
     </>
   );
-}
+};

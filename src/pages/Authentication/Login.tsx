@@ -32,7 +32,7 @@ const verifyOTP = async (phoneNumber: string, otp: string) => {
   });
 };
 
-export default function Login() {
+export const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -161,4 +161,4 @@ export default function Login() {
       </div>
     </div>
   );
-}
+};

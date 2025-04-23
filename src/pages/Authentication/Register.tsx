@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/card";
 import { toast } from "@/components/ui/use-toast";
 
-export default function Register() {
+export const Register = () => {
   const { register } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -145,4 +145,4 @@ export default function Register() {
       </div>
     </>
   );
-}
+};
